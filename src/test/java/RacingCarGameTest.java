@@ -7,12 +7,13 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 
 @DisplayName("")
-public class GameTest {
+public class RacingCarGameTest {
 
     @Test
     @DisplayName("게임 객체 생성 여부 확인")
     void isGameExist() {
-        Game g = Game.newInstance();
+        RacingCarGame g = RacingCarGame.newInstance();
         assertThatCode(() -> Objects.requireNonNull(g)).doesNotThrowAnyException();
     }
+    
 }

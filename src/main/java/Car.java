@@ -52,4 +52,5 @@ public final class Car implements Comparable<Car> {
     public int hashCode() {
         return Objects.hash(owner, offset);
     }
+    
 }

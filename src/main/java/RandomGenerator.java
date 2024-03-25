@@ -11,4 +11,5 @@ public class RandomGenerator {
     public int generate() {
         return random.nextInt(10);
     }
+    
 }
