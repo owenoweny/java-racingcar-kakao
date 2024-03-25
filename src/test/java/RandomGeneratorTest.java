@@ -10,10 +10,10 @@ public class RandomGeneratorTest {
     @DisplayName("0-9 사이 랜덤 값 발생 100,000회 확인")
     void checkRandom() {
         for (int i = 0; i < 100_000; i++) {
-            assertThat(RandomGenerator.generate())
+            assertThat(new RandomGenerator().generate())
                     .isGreaterThan(-1)
                     .isLessThan(10);
         }
     }
-    
+
 }
