@@ -12,7 +12,7 @@ public class Parser {
     private final String delimiter;
     private final String targetString;
 
-    public Parser(String delimiter, String targetString) {
+    private Parser(String delimiter, String targetString) {
         this.delimiter = delimiter;
         this.targetString = targetString;
     }
@@ -33,5 +33,5 @@ public class Parser {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
-    
+
 }
