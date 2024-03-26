@@ -9,30 +9,29 @@ import java.util.stream.Collectors;
 public class Parser {
 
     private static final Pattern pattern = Pattern.compile("//(.)\n(.*)");
+    private final String delimiter;
+    private final String targetString;
 
-    public List<Integer> parse(String input) {
-        if (input.startsWith("//")) {
-            return parseCustom(input);
+    public Parser(String delimiter, String targetString) {
+        this.delimiter = delimiter;
+        this.targetString = targetString;
+    }
+
+    public static Parser of(String input) {
+        if (!input.startsWith("//")) {
+            return new Parser(",|:", input);
         }
-        return parseDefault(input);
-    }
-
-    private List<Integer> parseDefault(String input) {
-        return split(",|:", input);
-    }
-
-    private List<Integer> parseCustom(String input) {
         Matcher m = pattern.matcher(input);
         if (!m.find()) {
             throw new RuntimeException("");
         }
-        return split(m.group(1), m.group(2));
+        return new Parser(m.group(1), m.group(2));
     }
 
-    private List<Integer> split(String regex, String input) {
-        return Arrays.stream(input.split(regex))
+    public List<Integer> find() {
+        return Arrays.stream(targetString.split(delimiter))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
-
+    
 }
