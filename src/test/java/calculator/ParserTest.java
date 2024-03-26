@@ -43,4 +43,9 @@ public class ParserTest {
         assertThatThrownBy(() -> Parser.of("//.\n1.2.3")).isInstanceOf(RuntimeException.class);
     }
 
+    @Test
+    @DisplayName("숫자가 아닌 입력값을 받았을 때 RuntimeException이 발생")
+    void useInputAsNonNumeric() {
+        assertThatThrownBy(() -> Parser.of("a,b,c")).isInstanceOf(RuntimeException.class);
+    }
 }

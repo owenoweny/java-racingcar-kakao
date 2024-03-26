@@ -9,12 +9,27 @@ import java.util.stream.Collectors;
 public class Parser {
     private static final Pattern defaultInputFormatPattern = Pattern.compile("//(.)\n(.*)");
     private static final Pattern forbiddenDelimiterPattern = Pattern.compile("\\.|\\^|\\$|\\*|\\+|\\?|\\|");
-    private final String delimiter;
-    private final String targetString;
+
+    private final List<Integer> numbers;
+
 
     private Parser(String delimiter, String targetString) {
-        this.delimiter = delimiter;
-        this.targetString = targetString;
+        try {
+            numbers = Arrays.stream(targetString.split(delimiter))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("문자를 입력할 수 없습니다.");
+        }
+        validateNegatives();
+    }
+
+    private void validateNegatives() {
+        numbers.stream().filter(i -> i < 0)
+                .findAny()
+                .ifPresent((number) -> {
+                    throw new RuntimeException("음수를 입력할 수 없습니다.");
+                });
     }
 
     public static Parser of(String input) {
@@ -37,8 +52,6 @@ public class Parser {
     }
 
     public List<Integer> find() {
-        return Arrays.stream(targetString.split(delimiter))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        return numbers;
     }
 }
