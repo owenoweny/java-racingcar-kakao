@@ -1,3 +1,5 @@
+package racinggame.domains;
+
 public final class MoveChecker {
 
     private MoveChecker() {

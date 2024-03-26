@@ -1,3 +1,8 @@
+package racinggame;
+
+import racinggame.domains.Car;
+import racinggame.domains.RacingCarGame;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -13,8 +18,8 @@ public final class ConsoleView {
 
     public static List<String> getCarNamesInput() {
         String nameInput = scanner.nextLine();
-        List<String> carNames = Arrays.stream(nameInput.split(",")).collect(Collectors.toList());
-        return carNames;
+        return Arrays.stream(nameInput.split(","))
+                .collect(Collectors.toList());
     }
 
     public static void printTrialInputPrompt() {
@@ -30,18 +35,18 @@ public final class ConsoleView {
     }
 
     public static void printResult(RacingCarGame racingCarGame) {
-        String result = racingCarGame
+        System.out.println(racingCarGame
                 .cars()
                 .winners()
                 .stream()
                 .map(Car::owner)
                 .collect(Collectors.joining(","))
-                + "가 최종 우승했습니다.";
-        System.out.println(result);
+                + "가 최종 우승했습니다.");
     }
 
     public static void printCarOffset(RacingCarGame racingCarGame) {
         racingCarGame.showStatus();
         System.out.println();
     }
+
 }

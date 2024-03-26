@@ -1,3 +1,5 @@
+package racinggame.domains;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,5 +17,5 @@ public class RacingCarGameTest {
         RacingCarGame g = RacingCarGame.newInstance();
         assertThatCode(() -> Objects.requireNonNull(g)).doesNotThrowAnyException();
     }
-    
+
 }

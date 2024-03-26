@@ -1,3 +1,7 @@
+package racinggame.domains;
+
+import racinggame.utils.RandomGenerator;
+
 import java.util.List;
 
 //Todo : rename

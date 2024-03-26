@@ -1,3 +1,5 @@
+package racinggame.utils;
+
 import java.util.Random;
 
 public class RandomGenerator {
@@ -11,5 +13,5 @@ public class RandomGenerator {
     public int generate() {
         return random.nextInt(10);
     }
-    
+
 }
