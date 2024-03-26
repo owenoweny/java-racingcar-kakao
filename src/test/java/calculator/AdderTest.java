@@ -9,7 +9,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("덧셈기 유틸 테스트")
 public class AdderTest {
-
     @Test
     @DisplayName("덧셈 정적 메서드는 리스트를 입력 받아 합산 결과를 반환")
     void addIntegerList() {
