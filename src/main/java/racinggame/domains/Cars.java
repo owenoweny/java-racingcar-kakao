@@ -4,7 +4,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public final class Cars {
-
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -34,5 +33,4 @@ public final class Cars {
                 .filter(e -> cars.get(0).offset() <= e.offset())
                 .collect(Collectors.toList());
     }
-
 }

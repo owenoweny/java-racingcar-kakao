@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("자동차 객체 테스트")
 public class CarTest {
-
     @Test
     @DisplayName("자동차가 움직임에 상태가 바뀜을 확인")
     void checkMoveState() {
@@ -44,5 +43,4 @@ public class CarTest {
 
         assertThat(car1.compareTo(car2) > 0).isTrue();
     }
-
 }

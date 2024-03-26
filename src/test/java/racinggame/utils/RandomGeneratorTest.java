@@ -7,7 +7,6 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @DisplayName("랜덤 수를 생성 결과 테스트")
 public class RandomGeneratorTest {
-
     @Test
     @DisplayName("0-9 사이 랜덤 값 발생 100,000회 확인")
     void checkRandom() {
@@ -17,5 +16,4 @@ public class RandomGeneratorTest {
                     .isLessThan(10);
         }
     }
-
 }

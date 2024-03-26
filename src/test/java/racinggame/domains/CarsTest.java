@@ -11,7 +11,6 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @DisplayName("게임에 참가하는 자동차들 관련 테스트")
 public class CarsTest {
-
     @Test
     @DisplayName("입력받은 차 이름을 바탕으로 객체를 초기화")
     void initialize() {

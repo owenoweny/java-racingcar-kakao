@@ -4,9 +4,7 @@ import racinggame.utils.RandomGenerator;
 
 import java.util.List;
 
-//Todo : rename
 public final class RacingCarGame {
-
     private Cars cars;
     private RandomGenerator randomGenerator;
 
@@ -43,5 +41,4 @@ public final class RacingCarGame {
                 .stream()
                 .forEach(e -> System.out.println(e.owner() + " : " + "-".repeat(e.offset())));
     }
-
 }

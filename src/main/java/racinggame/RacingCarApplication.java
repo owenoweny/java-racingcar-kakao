@@ -2,12 +2,7 @@ package racinggame;
 
 import racinggame.domains.RacingCarGame;
 
-import java.util.Scanner;
-
 public class RacingCarApplication {
-
-    private final Scanner scanner = new Scanner(System.in);
-
     public RacingCarApplication() {
     }
 
@@ -29,5 +24,4 @@ public class RacingCarApplication {
     public static void main(String[] args) {
         new RacingCarApplication().run();
     }
-
 }

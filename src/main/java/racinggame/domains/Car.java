@@ -4,7 +4,6 @@ import java.util.InputMismatchException;
 import java.util.Objects;
 
 public final class Car implements Comparable<Car> {
-
     private final String owner;
 
     private int offset;

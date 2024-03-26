@@ -1,5 +1,8 @@
 package calculator;
 
+import calculator.domains.Adder;
+import calculator.domains.Parser;
+
 import java.util.Scanner;
 
 public class CalculatorApp {
