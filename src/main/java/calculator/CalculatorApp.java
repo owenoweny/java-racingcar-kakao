@@ -3,19 +3,11 @@ package calculator;
 import calculator.domains.Adder;
 import calculator.domains.Parser;
 
-import java.util.Scanner;
-
 public class CalculatorApp {
-    public void run() {
-        String input = new Scanner(System.in).nextLine();
+    public int calculate(String input) {
         if (input == null || input.isBlank()) {
-            System.out.println(0);
-            return;
+            return 0;
         }
-        System.out.println(Adder.sum(Parser.of(input).find()));
-    }
-
-    public static void main(String[] args) {
-        new CalculatorApp().run();
+        return Adder.sum(Parser.of(input).find());
     }
 }
