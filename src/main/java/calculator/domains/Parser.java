@@ -9,9 +9,7 @@ import java.util.stream.Collectors;
 public class Parser {
     private static final Pattern defaultInputFormatPattern = Pattern.compile("//(.)\n(.*)");
     private static final Pattern forbiddenDelimiterPattern = Pattern.compile("\\.|\\^|\\$|\\*|\\+|\\?|\\|");
-
     private final List<Integer> numbers;
-
 
     private Parser(String delimiter, String targetString) {
         try {
@@ -39,7 +37,7 @@ public class Parser {
         }
         Matcher m = defaultInputFormatPattern.matcher(input);
         if (!m.find()) {
-            throw new RuntimeException("");
+            throw new RuntimeException("커스텀 구분자 입력 형식이 올바르지 않습니다.");
         }
         return new Parser(m.group(1), m.group(2));
     }

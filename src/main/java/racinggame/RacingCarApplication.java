@@ -12,13 +12,20 @@ public class RacingCarApplication {
 
         ConsoleView.printTrialInputPrompt();
         int trialInput = ConsoleView.getTrialInput();
+        validateTrialInputRange(trialInput);
 
         ConsoleView.printResultPrompt();
-        for (int reps = 0; reps < trialInput; reps++) {
+        for (int repetition = 0; repetition < trialInput; repetition++) {
             racingCarGame.processTurn();
             ConsoleView.printCarOffset(racingCarGame);
         }
         ConsoleView.printResult(racingCarGame);
+    }
+
+    private static void validateTrialInputRange(int trialInput) {
+        if (trialInput < 0) {
+            throw new RuntimeException("0 이상의 수를 입력해주십시오.");
+        }
     }
 
     public static void main(String[] args) {
