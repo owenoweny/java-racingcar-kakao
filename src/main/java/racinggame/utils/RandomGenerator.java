@@ -3,6 +3,7 @@ package racinggame.utils;
 import java.util.Random;
 
 public class RandomGenerator {
+    public static final int MAX_RANDOM_NUMBER = 10;
     private final Random random;
 
     public RandomGenerator() {
@@ -10,6 +11,6 @@ public class RandomGenerator {
     }
 
     public int generate() {
-        return random.nextInt(10);
+        return random.nextInt(MAX_RANDOM_NUMBER);
     }
 }
