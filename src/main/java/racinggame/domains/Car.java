@@ -3,7 +3,7 @@ package racinggame.domains;
 import java.util.InputMismatchException;
 import java.util.Objects;
 
-public final class Car implements Comparable<Car> {
+public final class Car {
     public static final int MAX_CAR_NAME_LENGTH = 5;
     private final String owner;
 
@@ -38,20 +38,23 @@ public final class Car implements Comparable<Car> {
     }
 
     @Override
-    public int compareTo(Car o) {
-        return Integer.compare(this.offset, o.offset);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return offset == car.offset && Objects.equals(owner, car.owner);
+        return Objects.equals(owner, car.owner);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(owner, offset);
+        return Objects.hash(owner);
+    }
+
+    public int compareOffset(Car c2) {
+        return Integer.compare(this.offset, c2.offset);
+    }
+
+    public boolean at(int offset) {
+        return this.offset == offset;
     }
 }

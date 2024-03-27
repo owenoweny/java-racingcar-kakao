@@ -41,6 +41,6 @@ public class CarTest {
 
         car1.move();
 
-        assertThat(car1.compareTo(car2) > 0).isTrue();
+        assertThat(car1.compareOffset(car2) > 0).isTrue();
     }
 }

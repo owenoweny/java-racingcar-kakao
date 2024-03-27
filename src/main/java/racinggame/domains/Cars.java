@@ -1,6 +1,9 @@
 package racinggame.domains;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class Cars {
@@ -29,9 +32,9 @@ public final class Cars {
     }
 
     public List<Car> winners() {
-        cars.sort(Comparator.reverseOrder());
+        Car winner = cars.stream().max(Car::compareOffset).get();
         return cars.stream()
-                .filter(e -> cars.get(0).offset() <= e.offset())
+                .filter(car -> car.at(winner.offset()))
                 .collect(Collectors.toList());
     }
 }
