@@ -11,21 +11,23 @@ import java.util.stream.Collectors;
 public final class ConsoleView {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void printCarNamesInputPrompt() {
+    private static void printCarNamesInputPrompt() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
     public static List<String> getCarNamesInput() {
+        printCarNamesInputPrompt();
         String nameInput = scanner.nextLine();
         return Arrays.stream(nameInput.split(","))
                 .collect(Collectors.toList());
     }
 
-    public static void printTrialInputPrompt() {
+    private static void printTrialInputPrompt() {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
     public static int getTrialInput() {
+        printTrialInputPrompt();
         return Integer.parseInt(scanner.nextLine());
     }
 

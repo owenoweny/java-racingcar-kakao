@@ -7,10 +7,8 @@ public class RacingCarApplication {
     }
 
     public void run() {
-        ConsoleView.printCarNamesInputPrompt();
         RacingCarGame racingCarGame = RacingCarGame.of(ConsoleView.getCarNamesInput());
 
-        ConsoleView.printTrialInputPrompt();
         int trialInput = ConsoleView.getTrialInput();
         validateTrialInputRange(trialInput);
 
