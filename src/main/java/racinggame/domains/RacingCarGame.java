@@ -36,8 +36,7 @@ public final class RacingCarGame {
     }
 
     public void showStatus() {
-        cars
-                .list()
+        cars.list()
                 .stream()
                 .forEach(e -> System.out.println(e.owner() + " : " + "-".repeat(e.offset())));
     }

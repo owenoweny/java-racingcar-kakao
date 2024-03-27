@@ -19,7 +19,9 @@ public final class Cars {
     }
 
     public static Cars of(List<String> carNames) {
-        return new Cars(carNames.stream().map(Car::of).collect(Collectors.toList()));
+        return new Cars(carNames.stream()
+                .map(Car::of)
+                .collect(Collectors.toList()));
     }
 
     public List<Car> list() {
@@ -28,8 +30,7 @@ public final class Cars {
 
     public List<Car> winners() {
         cars.sort(Comparator.reverseOrder());
-        return cars
-                .stream()
+        return cars.stream()
                 .filter(e -> cars.get(0).offset() <= e.offset())
                 .collect(Collectors.toList());
     }

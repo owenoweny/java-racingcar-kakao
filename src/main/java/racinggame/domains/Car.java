@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Objects;
 
 public final class Car implements Comparable<Car> {
+    public static final int MAX_CAR_NAME_LENGTH = 5;
     private final String owner;
 
     private int offset;
@@ -19,7 +20,7 @@ public final class Car implements Comparable<Car> {
     }
 
     private static void validateLength(String name) {
-        if (name.length() > 5) {
+        if (name.length() > MAX_CAR_NAME_LENGTH) {
             throw new InputMismatchException("이름은 최대 다섯 글자입니다.");
         }
     }
