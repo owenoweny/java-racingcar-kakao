@@ -14,8 +14,7 @@ public class ParserTest {
     @Test
     @DisplayName("쉼표를 구분자로 하는 정수 문자열을 정수 리스트로 파싱")
     void parseByComma() {
-        Parser parser = Parser.of("1,2,3");
-        List<Integer> parsed = parser.find();
+        List<Integer> parsed = Parser.parse("1,2,3");
         assertThat(parsed.size()).isEqualTo(3);
         assertThat(parsed).isEqualTo(List.of(1, 2, 3));
     }
@@ -23,8 +22,7 @@ public class ParserTest {
     @Test
     @DisplayName("콜론을 구분자로 하는 정수 문자열을 정수 리스트로 파싱")
     void parseByColon() {
-        Parser parser = Parser.of("1:2:3");
-        List<Integer> parsed = parser.find();
+        List<Integer> parsed = Parser.parse("1:2:3");
         assertThat(parsed.size()).isEqualTo(3);
         assertThat(parsed).isEqualTo(List.of(1, 2, 3));
     }
@@ -32,8 +30,7 @@ public class ParserTest {
     @Test
     @DisplayName("커스텀 문자를 이용하여 정수 문자열을 정수 리스트로 파싱")
     void name() {
-        Parser parser = Parser.of("//;\n1;2;3");
-        List<Integer> parsed = parser.find();
+        List<Integer> parsed = Parser.parse("//;\n1;2;3");
         assertThat(parsed.size()).isEqualTo(3);
         assertThat(parsed).isEqualTo(List.of(1, 2, 3));
     }
@@ -41,12 +38,12 @@ public class ParserTest {
     @Test
     @DisplayName("정규표현식 예약어가 구분자로 사용될 때 RuntimeException이 발생")
     void useDelimiterAsRegexComponent() {
-        assertThatThrownBy(() -> Parser.of("//.\n1.2.3")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> Parser.parse("//.\n1.2.3")).isInstanceOf(RuntimeException.class);
     }
 
     @Test
     @DisplayName("숫자가 아닌 입력값을 받았을 때 RuntimeException이 발생")
     void useInputAsNonNumeric() {
-        assertThatThrownBy(() -> Parser.of("a,b,c")).isInstanceOf(RuntimeException.class);
+        assertThatThrownBy(() -> Parser.parse("a,b,c")).isInstanceOf(RuntimeException.class);
     }
 }
