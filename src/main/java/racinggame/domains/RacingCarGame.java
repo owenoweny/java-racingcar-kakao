@@ -8,9 +8,9 @@ public final class RacingCarGame {
     private Cars cars;
     private RandomGenerator randomGenerator;
 
-    public RacingCarGame(Cars cars) {
+    public RacingCarGame(Cars cars, RandomGenerator randomGenerator) {
         this.cars = cars;
-        this.randomGenerator = new RandomGenerator();
+        this.randomGenerator = randomGenerator;
     }
 
     public RacingCarGame() {
@@ -21,7 +21,7 @@ public final class RacingCarGame {
     }
 
     public static RacingCarGame of(List<String> carNames) {
-        return new RacingCarGame(Cars.of(carNames));
+        return new RacingCarGame(Cars.of(carNames), new RandomGenerator());
     }
 
     public Cars cars() {
