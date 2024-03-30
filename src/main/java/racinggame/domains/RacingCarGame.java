@@ -13,13 +13,6 @@ public final class RacingCarGame {
         this.randomGenerator = randomGenerator;
     }
 
-    public RacingCarGame() {
-    }
-
-    public static RacingCarGame newInstance() {
-        return new RacingCarGame();
-    }
-
     public static RacingCarGame of(List<String> carNames) {
         return new RacingCarGame(Cars.of(carNames), new RandomGenerator());
     }
