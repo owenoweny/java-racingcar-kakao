@@ -47,7 +47,9 @@ public final class ConsoleView {
     }
 
     public static void printCarOffset(RacingCarGame racingCarGame) {
-        racingCarGame.showStatus();
+        racingCarGame.cars()
+                .values()
+                .forEach(e -> System.out.println(e.owner() + " : " + "-".repeat(e.offset())));
         System.out.println();
     }
 }

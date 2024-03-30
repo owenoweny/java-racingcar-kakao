@@ -35,9 +35,9 @@ public final class RacingCarGame {
                 .forEach(Car::move);
     }
 
-    public void showStatus() {
-        cars.values()
-                .stream()
-                .forEach(e -> System.out.println(e.owner() + " : " + "-".repeat(e.offset())));
+    public static void validateTrialInputRange(int trialInput) {
+        if (trialInput < 1) {
+            throw new RuntimeException("1 이상의 수를 입력해주십시오.");
+        }
     }
 }
