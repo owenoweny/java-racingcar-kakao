@@ -1,8 +1,10 @@
 package racinggame.domains;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racinggame.utils.RandomGenerator;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -64,5 +66,30 @@ public class CarsTest {
                 .hasSize(2)
                 .contains(pobi)
                 .contains(jseo);
+    }
+
+    @Test
+    @DisplayName("한 턴을 진행한 후에 차가 유효하게 이동한다.")
+    void processTurn() {
+        RandomGenerator randomGenerator = new RandomGenerator() {
+            @Override
+            public int generate() {
+                return 5;
+            }
+        };
+        Cars cars = new Cars(
+                List.of(
+                        Car.of("car1"),
+                        Car.of("car2"),
+                        Car.of("car3")
+                )
+                , randomGenerator);
+        cars.move();
+
+        cars.values()
+                .forEach(car -> {
+                    Assertions.assertThat(car.offset())
+                            .isEqualTo(1);
+                });
     }
 }

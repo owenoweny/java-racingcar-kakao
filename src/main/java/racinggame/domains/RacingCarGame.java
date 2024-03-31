@@ -1,20 +1,15 @@
 package racinggame.domains;
 
-import racinggame.utils.RandomGenerator;
-
-import java.util.List;
-
 public final class RacingCarGame {
-    private Cars cars;
-    private RandomGenerator randomGenerator;
+    private final Cars cars;
+    private final int totalRound;
+    private int moveCount;
 
-    public RacingCarGame(Cars cars, RandomGenerator randomGenerator) {
+    public RacingCarGame(Cars cars, int totalRound) {
+        validateTrialInputRange(totalRound);
         this.cars = cars;
-        this.randomGenerator = randomGenerator;
-    }
-
-    public static RacingCarGame of(List<String> carNames) {
-        return new RacingCarGame(Cars.of(carNames), new RandomGenerator());
+        this.totalRound = totalRound;
+        this.moveCount = 0;
     }
 
     public Cars cars() {
@@ -22,15 +17,24 @@ public final class RacingCarGame {
     }
 
     public void processTurn() {
-        cars.values()
-                .stream()
-                .filter(e -> MoveChecker.check(randomGenerator.generate()))
-                .forEach(Car::move);
+        checkEnd();
+        moveCount++;
+        cars.move();
     }
 
-    public static void validateTrialInputRange(int trialInput) {
+    public boolean isEnd() {
+        return moveCount >= totalRound;
+    }
+
+    private void validateTrialInputRange(int trialInput) {
         if (trialInput < 1) {
             throw new RuntimeException("1 이상의 수를 입력해주십시오.");
+        }
+    }
+
+    private void checkEnd() {
+        if (isEnd()) {
+            throw new RuntimeException("이미 라운드가 종료되었습니다.");
         }
     }
 }

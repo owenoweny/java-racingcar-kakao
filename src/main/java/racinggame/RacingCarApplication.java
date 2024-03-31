@@ -1,5 +1,6 @@
 package racinggame;
 
+import racinggame.domains.Cars;
 import racinggame.domains.RacingCarGame;
 
 public class RacingCarApplication {
@@ -7,13 +8,12 @@ public class RacingCarApplication {
     }
 
     public void run() {
-        RacingCarGame racingCarGame = RacingCarGame.of(ConsoleView.getCarNamesInput());
-
+        Cars cars = Cars.of(ConsoleView.getCarNamesInput());
         int trialInput = ConsoleView.getTrialInput();
-        RacingCarGame.validateTrialInputRange(trialInput);
+        RacingCarGame racingCarGame = new RacingCarGame(cars, trialInput);
 
         ConsoleView.printResultPrompt();
-        for (int repetition = 0; repetition < trialInput; repetition++) {
+        while (!racingCarGame.isEnd()) {
             racingCarGame.processTurn();
             ConsoleView.printCarOffset(racingCarGame);
         }
