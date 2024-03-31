@@ -15,27 +15,27 @@ public final class ConsoleView {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
     }
 
-    public static List<String> getCarNamesInput() {
+    public List<String> getCarNamesInput() {
         printCarNamesInputPrompt();
         String nameInput = scanner.nextLine();
         return Arrays.stream(nameInput.split(","))
                 .collect(Collectors.toList());
     }
 
-    private static void printTrialInputPrompt() {
+    private void printTrialInputPrompt() {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    public static int getTrialInput() {
+    public int getTrialInput() {
         printTrialInputPrompt();
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public static void printResultPrompt() {
+    public void printResultPrompt() {
         System.out.println("\n실행 결과");
     }
 
-    public static void printResult(RacingCarGame racingCarGame) {
+    public void printResult(RacingCarGame racingCarGame) {
         String gameResultMessage = racingCarGame
                 .cars()
                 .winners()
@@ -46,7 +46,7 @@ public final class ConsoleView {
         System.out.println(gameResultMessage);
     }
 
-    public static void printCarOffset(RacingCarGame racingCarGame) {
+    public void printCarOffset(RacingCarGame racingCarGame) {
         racingCarGame.cars()
                 .values()
                 .forEach(e -> System.out.println(e.owner() + " : " + "-".repeat(e.offset())));
